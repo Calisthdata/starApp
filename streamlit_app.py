@@ -1,5 +1,5 @@
 import streamlit as st
 
-st.title('Tod')
+st.title('🤖 Tood')
 
 st.info("I'm Todd")
