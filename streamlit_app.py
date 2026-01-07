@@ -35,10 +35,10 @@ page = st.sidebar.radio("Aller vers :", ["Chatbot", "Recherche & Caractéristiqu
 
 # --- PAGE 1 : CHATBOT ---
 if page == "Chatbot":
+    st.title('🤖 Tood')
+    st.info("I'm Todd")
     
-st.title('🤖 Tood')
-        
-st.info("I'm Todd")
+
     
     if "messages" not in st.session_state:
         st.session_state.messages = []
