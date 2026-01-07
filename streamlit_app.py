@@ -36,7 +36,7 @@ page = st.sidebar.radio("Aller vers :", ["Chatbot", "Recherche & Caractéristiqu
 # --- PAGE 1 : CHATBOT ---
 if page == "Chatbot":
     st.title('🤖 Tood')
-    st.info("I'm Todd")
+    st.info("Je suis Todd ton assistant IA qui t'aide à en savoir plus sur les animaux")
     
 
     
