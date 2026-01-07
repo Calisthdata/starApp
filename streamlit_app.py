@@ -3,11 +3,6 @@ import pandas as pd
 
 
 
-
-st.title('🤖 Tood')
-
-st.info("I'm Todd")
-
 # Configuration de la page
 st.set_page_config(page_title="BioData Strategist Hub", page_icon="🧬", layout="wide")
 
@@ -40,7 +35,10 @@ page = st.sidebar.radio("Aller vers :", ["Chatbot", "Recherche & Caractéristiqu
 
 # --- PAGE 1 : CHATBOT ---
 if page == "Chatbot":
-    st.title("🤖 Chatbot Intelligent")
+    
+st.title('🤖 Tood')
+        
+st.info("I'm Todd")
     
     if "messages" not in st.session_state:
         st.session_state.messages = []
