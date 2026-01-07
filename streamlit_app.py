@@ -36,7 +36,7 @@ def load_educational_data():
             "Un panda passe 12 heures par jour à manger du bambou.",
             "Le kangourou utilise sa queue comme une troisième jambe pour s'équilibrer.",
             "Les pingouins ne volent pas dans l'air, ils 'volent' sous l'eau !",
-            "L'aigle peut voir un lapin à plus de 3 kilomètres de distance."
+            "L'aigle peut voir un lapin à plus de 3 kilomètres de distance.",
             "Prédateur marin, dents tranchantes, cartilagineux.",
             "Vit en meute, chasseur nocturne, sauvage.",
             "Produit du lait, calme, vit en ferme.",
