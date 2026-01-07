@@ -25,8 +25,8 @@ def load_educational_data():
             "On l'appel : Roi des cieux",
             "Prédateur marin, dents tranchantes, cartilagineux.",
             "Vit en meute, chasseur nocturne, sauvage.",
-            "Produit du lait, calme, vit en ferme.",
-            "Rampe, peut être venimeux, peau écailleuse."],
+            "Produit du lait, calme, vit en ferme."
+            ],
         "Le_Savais_Tu": [
             "Le chien est le meilleur ami de l'homme depuis 15 000 ans.",
             "Un chat peut sauter jusqu'à 6 fois sa taille !",
@@ -38,7 +38,8 @@ def load_educational_data():
             "L'aigle peut voir un lapin à plus de 3 kilomètres de distance."
             "Prédateur marin, dents tranchantes, cartilagineux.",
             "Vit en meute, chasseur nocturne, sauvage.",
-            "Produit du lait, calme, vit en ferme."
+            "Produit du lait, calme, vit en ferme.",
+            "Rampe, peut être venimeux, peau écailleuse."
         ]
     }
     return pd.DataFrame(data)
