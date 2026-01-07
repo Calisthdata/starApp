@@ -13,6 +13,7 @@ def load_educational_data():
         "Cri": ["Aboie", "Miaule", "Rugit", "Barrit", "Grogne", "Tousse", "Brait", "Glapit"],
         "Alimentation": ["Omnivore", "Carnivore", "Carnivore", "Herbivore", "Herbivore", "Herbivore", "Carnivore", "Carnivore"],
         "Vitesse_max_kmh": [45, 48, 80, 40, 32, 70, 36, 160],
+        "Dangerosité": [3, 2, 9, 7, 8, 6, 1, 9],
         "Caractéristiques": [
             "Fidèle, aime les os, domestique.",
             "Indépendant, aime le lait, agile.",
