@@ -62,12 +62,12 @@ if choice == "Discuter avec le Robot":
 
         for _, row in df.iterrows():
             if row['Cri'].lower() in prompt_lower:
-                if "lion" in prompt_lower and row['Animal'] == "Chien":
+                if "lion" in p_low and row['Animal'] == "Chien":
                     response = f"Faux. Selon mes données, c'est le **{row['Animal']}** qui {row['Cri'].lower()}."
                 else:
                     response = f"L'animal qui {row['Cri'].lower()} est le **{row['Animal']}**."
                 break
-            elif row['Animal'].lower() in prompt_lower:
+            elif row['Animal'].lower() in p_low:
                 response = f"Le **{row['Animal']}** est {row['Alimentation'].lower()}. Note de danger : {row['Dangerosité']}/10. {row['Caractéristiques']}"
                 break
 
