@@ -1,0 +1,105 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+# Configuration de la page
+st.set_page_config(page_title="BioData Strategist Hub", page_icon="🧬", layout="wide")
+
+# 1. Dataset enrichi pour le Dashboard
+@st.cache_data
+def load_data():
+    data = {
+        "Animal": ["Chien", "Chat", "Lion", "Éléphant", "Requin", "Loup", "Vache", "Serpent"],
+        "Cri": ["Aboie", "Miaule", "Rugit", "Barrit", "Silence", "Hurle", "Meugle", "Siffle"],
+        "Alimentation": ["Omnivore", "Carnivore", "Carnivore", "Herbivore", "Carnivore", "Carnivore", "Herbivore", "Carnivore"],
+        "Dangerosité": [3, 2, 9, 7, 8, 6, 1, 9], # Note sur 10
+        "Caractéristiques": [
+            "Fidèle, aime les os, domestique.",
+            "Indépendant, aime le lait, agile.",
+            "Roi de la savane, prédateur alpha, vit en groupe.",
+            "Grandes oreilles, trompe, très intelligent.",
+            "Prédateur marin, dents tranchantes, cartilagineux.",
+            "Vit en meute, chasseur nocturne, sauvage.",
+            "Produit du lait, calme, vit en ferme.",
+            "Rampe, peut être venimeux, peau écailleuse."
+        ]
+    }
+    return pd.DataFrame(data)
+
+df = load_data()
+
+# --- BARRE LATÉRALE (Navigation) ---
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Aller vers :", ["Chatbot", "Recherche & Caractéristiques", "Dashboard Analytics"])
+
+# --- PAGE 1 : CHATBOT ---
+if page == "Chatbot":
+    st.title("🤖 Chatbot Intelligent")
+    
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    if prompt := st.chat_input("Posez une question (ex: Qui aboie ?)"):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        response = "Désolé, je n'ai pas cette information."
+        prompt_lower = prompt.lower()
+        
+        for _, row in df.iterrows():
+            if row['Cri'].lower() in prompt_lower:
+                if "lion" in prompt_lower and row['Animal'] == "Chien":
+                    response = f"Faux. Selon mes données, c'est le **{row['Animal']}** qui {row['Cri'].lower()}."
+                else:
+                    response = f"L'animal qui {row['Cri'].lower()} est le **{row['Animal']}**."
+                break
+            elif row['Animal'].lower() in prompt_lower:
+                response = f"Le **{row['Animal']}** est {row['Alimentation'].lower()}. Note de danger : {row['Dangerosité']}/10. {row['Caractéristiques']}"
+                break
+
+        with st.chat_message("assistant"):
+            st.markdown(response)
+        st.session_state.messages.append({"role": "assistant", "content": response})
+
+# --- PAGE 2 : RECHERCHE PAR CARACTÉRISTIQUES ---
+elif page == "Recherche & Caractéristiques":
+    st.title("🔍 Recherche Avancée")
+    search_query = st.text_input("Recherchez un mot-clé dans les caractéristiques (ex: 'lait', 'sauvage', 'trompe')")
+    
+    if search_query:
+        # Filtrage du dataframe selon les caractéristiques
+        results = df[df['Caractéristiques'].str.contains(search_query, case=False, na=False)]
+        
+        if not results.empty:
+            st.write(f"Résultat(s) pour : '{search_query}'")
+            st.dataframe(results[['Animal', 'Alimentation', 'Caractéristiques']], use_container_width=True)
+        else:
+            st.warning("Aucun animal ne correspond à cette caractéristique.")
+    else:
+        st.info("Entrez un mot pour filtrer les animaux.")
+
+# --- PAGE 3 : DASHBOARD ANALYTICS ---
+elif page == "Dashboard Analytics":
+    st.title("📊 Dashboard des Données")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.subheader("Niveau de Dangerosité")
+        fig_danger = px.bar(df, x="Animal", y="Dangerosité", color="Animal", 
+                            title="Classement par Danger (1-10)", color_discrete_sequence=px.colors.qualitative.Pastel)
+        st.plotly_chart(fig_danger, use_container_width=True)
+        
+    with col2:
+        st.subheader("Répartition par Alimentation")
+        fig_diet = px.pie(df, names="Alimentation", title="Régimes alimentaires", 
+                          hole=0.4, color_discrete_sequence=px.colors.qualitative.Safe)
+        st.plotly_chart(fig_diet, use_container_width=True)
+
+    st.subheader("Données Brutes")
+    st.table(df)
