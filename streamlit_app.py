@@ -8,17 +8,21 @@ st.set_page_config(page_title="Tood AI - École", page_icon="🤖", layout="wide
 @st.cache_data
 def load_educational_data():
     data = {
-        "Animal": ["Chien", "Chat", "Lion", "Éléphant", "Panda", "Kangourou", "Pingouin", "Aigle"],
-        "Continent": ["Europe", "Asie", "Afrique", "Afrique", "Asie", "Océanie", "Antarctique", "Amérique"],
-        "Cri": ["Aboie", "Miaule", "Rugit", "Barrit", "Grogne", "Tousse", "Brait", "Glapit"],
-        "Alimentation": ["Omnivore", "Carnivore", "Carnivore", "Herbivore", "Herbivore", "Herbivore", "Carnivore", "Carnivore"],
-        "Vitesse_max_kmh": [45, 48, 80, 40, 32, 70, 36, 160],
-        "Dangerosité": [3, 2, 9, 7, 8, 6, 1, 9],
+        "Animal": ["Chien", "Chat", "Lion", "Éléphant", "Panda", "Kangourou", "Pingouin", "Aigle", "Requin", "Loup", "Vache", "Serpent"],
+        "Continent": ["Europe", "Asie", "Afrique", "Afrique", "Asie", "Océanie", "Antarctique", "Amérique", "Europe", "Europe", "Europe", "Asie"],
+        "Cri": ["Aboie", "Miaule", "Rugit", "Barrit", "Grogne", "Tousse", "Brait", "Glapit","Clic","Hurle", "Meugle", "Siffle"],
+        "Alimentation": ["Omnivore", "Carnivore", "Carnivore", "Herbivore", "Herbivore", "Herbivore", "Carnivore", "Carnivore", "Carnivore", "Carnivore", "Herbivore", "Omnivore"],
+        "Vitesse_max_kmh": [45, 48, 80, 40, 32, 70, 36, 160, 19, 83, 36, 20],
+        "Dangerosité": [3, 2, 9, 7, 8, 6, 1, 9, 2, 2, 5, 9],
         "Caractéristiques": [
             "Fidèle, aime les os, domestique.",
             "Indépendant, aime le lait, agile.",
             "Roi de la savane, prédateur alpha, vit en groupe.",
             "Grandes oreilles, trompe, très intelligent.",
+            "Il est gros et doux, proche cousin de l'ours",
+            "Le kangourou saute très haut",
+            "Le pinguin glisse sur la banquise",
+            "On l'appel : Roi des cieux",
             "Prédateur marin, dents tranchantes, cartilagineux.",
             "Vit en meute, chasseur nocturne, sauvage.",
             "Produit du lait, calme, vit en ferme.",
@@ -32,6 +36,10 @@ def load_educational_data():
             "Le kangourou utilise sa queue comme une troisième jambe pour s'équilibrer.",
             "Les pingouins ne volent pas dans l'air, ils 'volent' sous l'eau !",
             "L'aigle peut voir un lapin à plus de 3 kilomètres de distance."
+            "Prédateur marin, dents tranchantes, cartilagineux.",
+            "Vit en meute, chasseur nocturne, sauvage.",
+            "Produit du lait, calme, vit en ferme.",
+            "Rampe, peut être venimeux, peau écailleuse."
         ]
     }
     return pd.DataFrame(data)
