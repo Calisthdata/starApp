@@ -38,8 +38,7 @@ def load_educational_data():
             "L'aigle peut voir un lapin à plus de 3 kilomètres de distance."
             "Prédateur marin, dents tranchantes, cartilagineux.",
             "Vit en meute, chasseur nocturne, sauvage.",
-            "Produit du lait, calme, vit en ferme.",
-            "Rampe, peut être venimeux, peau écailleuse."
+            "Produit du lait, calme, vit en ferme."
         ]
     }
     return pd.DataFrame(data)
