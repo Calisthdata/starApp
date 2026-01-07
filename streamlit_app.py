@@ -25,7 +25,8 @@ def load_educational_data():
             "On l'appel : Roi des cieux",
             "Prédateur marin, dents tranchantes, cartilagineux.",
             "Vit en meute, chasseur nocturne, sauvage.",
-            "Produit du lait, calme, vit en ferme."
+            "Produit du lait, calme, vit en ferme.",
+            "Rampe, peut être venimeux, peau écailleuse."
             ],
         "Le_Savais_Tu": [
             "Le chien est le meilleur ami de l'homme depuis 15 000 ans.",
