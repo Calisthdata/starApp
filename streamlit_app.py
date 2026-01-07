@@ -83,7 +83,7 @@ if choice == "Discuter avec le Robot":
         with st.chat_message("assistant"):
             st.write(res)
         st.session_state.messages.append({"role": "assistant", "content": res})
-elif page == "Recherche & Caractéristiques":
+elif choice == "Recherche & Caractéristiques":
     st.title("🔍 Recherche Avancée")
     search_query = st.text_input("Recherchez un mot-clé dans les caractéristiques (ex: 'lait', 'sauvage', 'trompe')")
     
